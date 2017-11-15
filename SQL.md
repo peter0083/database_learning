@@ -76,14 +76,65 @@ Where do integrity constraints come from?
 - ICs are based on real-world semantics
 - if you are only given a table instance, you cannot always guess all the constraints
 - IC is a statement about all possible instances
+- the more ICs we capture, less likely the model will fail
 
 Primary key constraints
 - given a set S = {S1, S2, ... , Sm}
 1. no two distinct tuplescan have the same values in all the key fields AND
 2. no subset of S is itself a key (according to 1)
+- primary key cannot be NULL!
+
+Primary key can be a combo of two attributes
+- ie. primary key = name and address
+- it means that "you can have duplicate names. you can have duplicate addresses. but! you cannot have a duplicate of the name+address combination"
 
 Super key
 - super keys are additional attributes are NOT really needed to serve the role of a key
 
 Candidate key
 - a candidate to be a primary key
+- `UNIQUE` is SQL's way to say that it is a candidate key
+
+Task: spot the silly constraint
+note: cid is course ID
+```sql
+CREATE TABLE Enrolled
+(sid CHAR(20),
+ cid CHAR(20),
+ grade CHAR(2),
+ PRIMARY KEY (sid),
+ UNIQUE (cid, grade))
+```
+-  `UNIQUE (cid, grade)` means that no two student can get the same grade! bizarre!
+
+Foreign keys: referential integrity
+- think of foreign keys as logical pointers
+- ie. you should an existing course from a course table and an existing student from a student table
+
+example: foreign key pointing to Students table
+```sql
+CREATE TABLE Enrolled
+  (sid CHAR(20),
+   cid CHAR(20),
+   grade CHAR(2),
+   PRIMARY KEY (sid, cid),
+   FOREIGN KEY (sid) REFERENCE Students
+   FOREIGN KEY (cid) REFERENCE Courses)
+``` 
+Enforcing foreign key/referential integrity
+- if you try to insert a non-existing student into an Enrolled table ---> reject!
+- what if a Students tuple is deleted
+  - also delete all Enrolled tuples that refers to it?
+  - disallow  deletion of this particular Students tuple?
+  
+  ```sql
+CREATE TABLE Enrolled
+  (sid CHAR(20),
+   cid CHAR(20),
+   grade CHAR(2),
+   PRIMARY KEY (sid, cid),
+   FOREIGN KEY (sid) REFERENCE Students
+   FOREIGN KEY (cid) REFERENCE Courses
+   ON DELETE CASCADE
+   ON UPDATE CASCADE)
+``` 
