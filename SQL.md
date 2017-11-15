@@ -37,3 +37,15 @@ Task: alter table
 ALTER TABLE Students
   ADD COLUMN firstYear: integer
 ```
+
+Task: add and delete tuples
+``sql
+INSERT
+INTO Students (sid, name, login, age, gpa)
+VALUES (53688, 'Smith', 'smith@ee', 18, 3.2)
+```
+```sql
+DELETE
+FROM Students
+WHERE name = 'Smith'
+```
