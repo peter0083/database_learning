@@ -127,7 +127,7 @@ Enforcing foreign key/referential integrity
   - also delete all Enrolled tuples that refers to it?
   - disallow  deletion of this particular Students tuple?
   
-  ```sql
+```sql
 CREATE TABLE Enrolled
   (sid CHAR(20),
    cid CHAR(20),
