@@ -81,3 +81,9 @@ Primary key constraints
 - given a set S = {S1, S2, ... , Sm}
 1. no two distinct tuplescan have the same values in all the key fields AND
 2. no subset of S is itself a key (according to 1)
+
+Super key
+- super keys are additional attributes are NOT really needed to serve the role of a key
+
+Candidate key
+- a candidate to be a primary key
