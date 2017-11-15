@@ -118,7 +118,7 @@ CREATE TABLE Enrolled
    cid CHAR(20),
    grade CHAR(2),
    PRIMARY KEY (sid, cid),
-   FOREIGN KEY (sid) REFERENCE Students
+   FOREIGN KEY (sid) REFERENCE Students,
    FOREIGN KEY (cid) REFERENCE Courses)
 ``` 
 Enforcing foreign key/referential integrity
@@ -133,7 +133,7 @@ CREATE TABLE Enrolled
    cid CHAR(20),
    grade CHAR(2),
    PRIMARY KEY (sid, cid),
-   FOREIGN KEY (sid) REFERENCE Students
+   FOREIGN KEY (sid) REFERENCE Students,
    FOREIGN KEY (cid) REFERENCE Courses
    ON DELETE CASCADE
    ON UPDATE CASCADE)
