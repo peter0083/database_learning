@@ -45,9 +45,25 @@ INSERT
 INTO Students (sid, name, login, age, gpa)
 VALUES (53688, 'Smith', 'smith@ee', 18, 3.2)
 ```
-
+Delete all the rows completely if the name is "Smith"
 ```sql
 DELETE
 FROM Students
 WHERE name = 'Smith'
+```
+What if there is no "Smith" in the table Students?
+- you get a "no change" message
+
+Task: update tuples
+
+```sql
+UPDATE Students
+SET gpa = gpa -1
+WHERE name = 'Smith'
+```
+
+Can update all tuples unconditionally
+```sql
+UPDATE Students
+SET gpa = gpa - 1
 ```
