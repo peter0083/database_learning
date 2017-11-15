@@ -18,9 +18,9 @@ Task: create table
 - domain constraints enforced by data type and character limits
 ```sql
 CREATE TABLE Students
-  (sid: CHAR(20),
+  (sid: CHAR(20) PRIMARY KEY,
    name: CHAR(20),
-   login: CHAR(10),
+   login: CHAR(10) UNIQUE,
    age: INTEGER,
    gpa: REAL)
 ```
@@ -39,6 +39,7 @@ ALTER TABLE Students
 ```
 
 Task: add and delete tuples
+
 ```sql
 INSERT
 INTO Students (sid, name, login, age, gpa)
