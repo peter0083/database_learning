@@ -12,6 +12,10 @@ Strengths of relational model
 - simple and powerful querying of data
 - query optimizer can reorder your query and not changing the answer
 
+Task: create table
+- create a table called Students
+- 5 attributes
+- domain constraints enforced by data type and character limits
 ```sql
 CREATE TABLE Students
   (sid: CHAR(20),
@@ -19,4 +23,17 @@ CREATE TABLE Students
    login: CHAR(10),
    age: INTEGER,
    gpa: REAL)
+```
+
+Task: Drop table
+- destorys the relation Students
+- the schema info and tuples are deleted
+```sql
+DROP TABLE Students
+```
+
+Task: alter table
+```sql
+ALTER TABLE Students
+  ADD COLUMN firstYear: integer
 ```
