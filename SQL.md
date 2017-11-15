@@ -11,3 +11,12 @@ NULL: a special value
 Strengths of relational model
 - simple and powerful querying of data
 - query optimizer can reorder your query and not changing the answer
+
+```sql
+CREATE TABLE Students
+  (sid: CHAR(20),
+   name: CHAR(20),
+   login: CHAR(10),
+   age: INTEGER,
+   gpa: REAL)
+```
