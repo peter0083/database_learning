@@ -146,8 +146,8 @@ CREATE TABLE Enrolled
    cid CHAR(20),
    grade CHAR(2),
    PRIMARY KEY (sid, cid),
-   FOREIGN KEY (sid) REFERENCE Students,
-   FOREIGN KEY (cid) REFERENCE Courses);
+   FOREIGN KEY (sid) REFERENCES Students(sid),
+   FOREIGN KEY (cid) REFERENCES Courses(cid));
 ``` 
 Enforcing foreign key/referential integrity
 - if you try to insert a non-existing student into an Enrolled table ---> reject!
