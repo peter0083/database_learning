@@ -29,7 +29,7 @@ CREATE TABLE Courses
    name: CHAR(20));
 ```
 in sqlite:
-```sqlite3
+```sql
 CREATE TABLE Students
   (sid CHAR(20) PRIMARY KEY,
    name CHAR(20),
