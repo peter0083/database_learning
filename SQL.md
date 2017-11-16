@@ -22,8 +22,26 @@ CREATE TABLE Students
    name: CHAR(20),
    login: CHAR(10) UNIQUE,
    age: INTEGER,
-   gpa: REAL)
+   gpa: REAL);
+   
+CREATE TABLE Courses
+  (cid: CHAR(5) PRIMARY KEY,
+   name: CHAR(20));
 ```
+in sqlite:
+```sqlite
+CREATE TABLE Students
+  (sid CHAR(20) PRIMARY KEY,
+   name CHAR(20),
+   login CHAR(10) UNIQUE,
+   age INTEGER,
+   gpa REAL);
+   
+CREATE TABLE Courses
+  (cid CHAR(5) PRIMARY KEY,
+   name CHAR(20));
+```
+
 
 Task: Drop table
 - destorys the relation Students
@@ -103,7 +121,7 @@ CREATE TABLE Enrolled
  cid CHAR(20),
  grade CHAR(2),
  PRIMARY KEY (sid),
- UNIQUE (cid, grade))
+ UNIQUE (cid, grade));
 ```
 -  `UNIQUE (cid, grade)` means that no two student can get the same grade! bizarre!
 
@@ -119,7 +137,7 @@ CREATE TABLE Enrolled
    grade CHAR(2),
    PRIMARY KEY (sid, cid),
    FOREIGN KEY (sid) REFERENCE Students,
-   FOREIGN KEY (cid) REFERENCE Courses)
+   FOREIGN KEY (cid) REFERENCE Courses);
 ``` 
 Enforcing foreign key/referential integrity
 - if you try to insert a non-existing student into an Enrolled table ---> reject!
@@ -133,8 +151,10 @@ CREATE TABLE Enrolled
    cid CHAR(20),
    grade CHAR(2),
    PRIMARY KEY (sid, cid),
-   FOREIGN KEY (sid) REFERENCE Students,
-   FOREIGN KEY (cid) REFERENCE Courses
-   ON DELETE CASCADE
-   ON UPDATE CASCADE)
+   FOREIGN KEY (sid) REFERENCE Students
+      ON DELETE CASCADE
+      ON UPDATE CASCADE,
+   FOREIGN KEY (cid) REFERENCE Courses,
+      ON DELETE CASCADE
+      ON UPDATE CASCADE);
 ``` 
