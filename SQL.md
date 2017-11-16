@@ -63,6 +63,16 @@ INSERT
 INTO Students (sid, name, login, age, gpa)
 VALUES (53688, 'Smith', 'smith@ee', 18, 3.2)
 ```
+
+Task: insert multiple tuples
+```sql
+INSERT
+INTO Students (sid, name, login, age, gpa)
+VALUES (52398, 'Peter', 'peter@ubc', 34, 4.0),
+       (54343, 'Gary', 'gary@sfu', 32, 4.0),
+       (52377, 'Charles', 'charles@ubc', 28, 3.6)
+``` 
+
 Delete all the rows completely if the name is "Smith" (exact match only)
 - Student with the name "John Smith" will not be affected.
 ```sql
