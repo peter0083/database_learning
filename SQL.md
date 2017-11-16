@@ -161,10 +161,62 @@ CREATE TABLE Enrolled
    cid CHAR(20),
    grade CHAR(2),
    PRIMARY KEY (sid, cid),
-   FOREIGN KEY (sid) REFERENCE Students
+   FOREIGN KEY (sid) 
+      REFERENCES Students(sid)
       ON DELETE CASCADE
       ON UPDATE CASCADE,
-   FOREIGN KEY (cid) REFERENCE Courses,
+   FOREIGN KEY (cid) 
+      REFERENCES Courses(cid)
       ON DELETE CASCADE
       ON UPDATE CASCADE);
 ``` 
+Putting everything together
+
+```sql
+CREATE TABLE Courses
+  (name CHAR(20),
+   cid CHAR(5) PRIMARY KEY);
+
+CREATE TABLE Students
+  (sid CHAR(20) PRIMARY KEY,
+   name CHAR(20),
+   login CHAR(10) UNIQUE,
+   age INTEGER,
+   gpa REAL);
+
+INSERT
+INTO Students (sid, name, login, age, gpa)
+VALUES (53688, 'Peter', 'peter@ubc', 34, 4.0),
+       (54343, 'Gary', 'gary@sfu', 32, 4.0),
+       (52377, 'Charles', 'charles@ubc', 28, 3.6);
+
+INSERT
+INTO Courses (cid, name)
+VALUES (522, 'DSCI'),
+       (571, 'DSCI');
+       
+CREATE TABLE Enrolled
+  (sid CHAR(20),
+   cid CHAR(20),
+   grade CHAR(2),
+   PRIMARY KEY (sid, cid),
+   FOREIGN KEY (sid) 
+      REFERENCES Students(sid)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE,
+   FOREIGN KEY (cid) 
+      REFERENCES Courses(cid)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE);
+      
+INSERT
+INTO Enrolled (sid, cid, grade)
+VALUES (53688, 571, 97),
+       (5237, 571, 68);
+
+SELECT * FROM Students;
+
+SELECT * FROM Courses;
+
+SELECT * FROM Enrolled;
+```
